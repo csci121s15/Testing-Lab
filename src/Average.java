@@ -2,7 +2,7 @@ public class Average{
   private double average;
   private int count;
   
-  class Average(){
+  public Average() {
   }
   
   public void addValue(double value){
