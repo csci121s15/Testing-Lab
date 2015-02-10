@@ -3,11 +3,20 @@ public class Range{
   private double start;
   
   public Range(double start, double stop){
-    
+    if (start == stop) {
+      start = 0.0;
+      stop = 0.0;
+    } else {
+      stop = Math.max(start, stop);
+      start = Math.min(start, stop);
+    }
   }
   
   public boolean contains(double value){
-    return true;
+    if (value > start && value < stop)
+      return true;
+    else
+      return false;
   }
   
   public double getWidth(){
@@ -23,6 +32,13 @@ public class Range{
   }
   
   public Range intersection(Range other){
-    return new Range(0.0, 0.0);
+    if (stop < other.getMin)
+      return new Range(other.getMin, stop);
+    else if (other.getMax > start)
+      return new Range(start, other.getMax);
+    else if (start == other.getMin && stop == other.getMax)
+      return new Range(start, stop);
+    else
+      return new Range(0.0, 0.0);
   }
 }
