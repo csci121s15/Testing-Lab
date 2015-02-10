@@ -1,19 +1,27 @@
 public class Average{
-  private double average;
+  private double sum;
   private int count;
   
   public Average() {
+    sum = 0.0;
+    count = 0;
+    
   }
   
   public void addValue(double value){
+    sum += value;
+    count ++;
   }
   
   public double getAverage(){
-  return 0;
+    if (count == 0)
+      return 0;
+    else 
+      return sum/count ;
   }
   
   public int getCount(){
-  return 0;
+    return count;
   }
   
 }
