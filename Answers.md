@@ -16,5 +16,11 @@ CSCI II Lab
 
 
 ####Question 3:
+1. A brand new object would would have a start and a stop value, that's it.
+2. This class does not contain any mutator methods.
+3. We can query whether or not a a value lies within the range, query the length/width of a range, query the min/max values that define the range, and find out if a given range overlaps with the current range.
+4. The boundary condition of this class is when something other than a double is passed to the range.
+
+
 
 
