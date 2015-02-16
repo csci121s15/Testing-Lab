@@ -1,19 +1,23 @@
 public class Range{
   private double stop;
   private double start;
+  private double a;
+  private double b;
+  private double newMax;
+  private double newMin;
   
-  public Range(double start, double stop){
-    if (start == stop) {
+  public Range(double a, double b){
+    if (a == b) {
       start = 0.0;
       stop = 0.0;
     } else {
-      stop = Math.max(start, stop);
-      start = Math.min(start, stop);
+       start = Math.min(a, b);
+       stop = Math.max(a, b);
     }
   }
   
   public boolean contains(double value){
-    if (value > start && value < stop)
+    if (value >= start && value < stop)
       return true;
     else
       return false;
@@ -32,13 +36,30 @@ public class Range{
   }
   
   public Range intersection(Range other){
-    if (stop < other.getMin)
-      return new Range(other.getMin, stop);
-    else if (other.getMax > start)
-      return new Range(start, other.getMax);
-    else if (start == other.getMin && stop == other.getMax)
+    //Are they equal?
+    if (start == other.getMin() && stop == other.getMax())
       return new Range(start, stop);
-    else
+    
+    //Make sure they actually overlap
+    if (other.getMin() > stop || start > other.getMax())
       return new Range(0.0, 0.0);
+    
+    //Determine Max, if any
+    if (other.getMax() > stop)
+      newMax = stop;
+    else if ( stop > other.getMax())
+      newMax = other.getMax(); 
+    else  
+      newMax = stop;
+    
+    //Determine Min, if any
+    if ( other.getMin()  > start)
+      newMin = other.getMin();
+    else if (other.getMin() < start)
+      newMin = start;
+    else
+      newMin = start;
+    
+    return new Range(newMin, newMax);
   }
 }

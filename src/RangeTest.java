@@ -16,16 +16,69 @@ public class RangeTest extends TestCase {
   public void testNewRange() {
     Range rng = new Range(0,0);
     
-    assertEquals(true, rng.contains(0));
+    assertEquals(false, rng.contains(0));
     assertEquals(0.0, rng.getWidth());
     assertEquals(0.0, rng.getMin());
     assertEquals(0.0, rng.getMax());
     
-    Range rng2 = rng.intersection(new Range(1,1));
-    assertEquals(0.0, rng.getMin());
-    assertEquals(0.0, rng.getMax());
+    Range rng2 = rng.intersection(new Range(1.0,1.0));
+    assertEquals(0.0, rng2.getMin());
+    assertEquals(0.0, rng2.getMax());
+  }
+ 
+  public void testEqualRanges() {
+    Range rng1 = new Range(0.0, 5.0);
     
+    assertEquals(true, rng1.contains(2.0));
+    assertEquals(5.0, rng1.getWidth());
+    assertEquals(0.0, rng1.getMin());
+    assertEquals(5.0, rng1.getMax());
     
+    Range rng2 = rng1.intersection(new Range(0.0, 5.0));
+    assertEquals(0.0, rng2.getMin());
+    assertEquals(5.0, rng2.getMax());
+  }  
+
+  public void testBiggerRange() {
+    Range rng1 = new Range(0.0, 5.0);
+    
+    assertEquals(true, rng1.contains(2.0));
+    assertEquals(5.0, rng1.getWidth());
+    assertEquals(0.0, rng1.getMin());
+    assertEquals(5.0, rng1.getMax());
+
+    Range rng2 = rng1.intersection(new Range(2.0, 10.0));
+    assertEquals(2.0, rng2.getMin());
+    assertEquals(5.0, rng2.getMax());
   }
   
+  public void testSmallerRange() {
+    Range rng1 = new Range(0.0, 5.0);
+    
+    assertEquals(true, rng1.contains(2.0));
+    assertEquals(5.0, rng1.getWidth());
+    assertEquals(0.0, rng1.getMin());
+    assertEquals(5.0, rng1.getMax());
+
+    Range rng2 = rng1.intersection(new Range(-10.0, 2.0));
+    assertEquals(0.0, rng2.getMin());
+    assertEquals(2.0, rng2.getMax());
+  }
+  
+  public void testNonIntersection() {
+    Range rng1 = new Range(0.0, 5.0);
+    
+    assertEquals(true, rng1.contains(2.0));
+    assertEquals(5.0, rng1.getWidth());
+    assertEquals(0.0, rng1.getMin());
+    assertEquals(5.0, rng1.getMax());
+
+    Range rng2 = rng1.intersection(new Range(-10.0, -1.0));
+    assertEquals(0.0, rng2.getMin());
+    assertEquals(0.0, rng2.getMax());
+  }
+  
+  
+  
 }
+  
