@@ -1,0 +1,3 @@
+1. Forgetting that an array value starts at zero instead of 1, accidentally changing the array values, and storing a mismatched type value.
+2. A new instance of the class will have no values in the arrays. If adding a single score, the arrays will each have one element. If adding multiple scores, the arrays will each have multiple elements.
+3. a) A brand new instance of the Range function would look like a range with the min of 0 and the max of 0. b) There are no mutations in this class. c) We can make the start larger than the stop, or the start can be equal to the stop. d) The min has to be less than the max, obviously, even though the start can be greater than the stop.
