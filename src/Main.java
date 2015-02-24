@@ -3,7 +3,7 @@ public class Main{
     Average avgOverlap = new Average();
     Average avgLength = new Average();
     
-    int numSimulations = 100000*100000;
+    int numSimulations = 10000000;
     
     for(int i = 0; i < numSimulations; i++) {
       //Create two new ranges with random start and stop values
