@@ -4,7 +4,7 @@ public class Range {
  
   
   public Range(double start, double stop) {
-    
+    int randI = (int)(Math.random()*1); 
     if (start <= stop) {
       this.start = start;
       this.stop = stop;
@@ -12,7 +12,9 @@ public class Range {
     else {
       this.start = stop;
       this.stop = start;
-  }
+    }
+    
+    
   }
   
   public boolean contains(double value) {
@@ -41,18 +43,18 @@ public class Range {
     double newMin = 0.0;
     double newMax = 0.0;
     
-    if (other.contains(start)); {
+    if (other.contains(start)) {
       newMin = start;
     }
-    if (other.contains(stop)); {
+    if (other.contains(stop)) {
       newMax = stop;
     }
     
-    if (contains(other.getMin())); {
+    if (contains(other.getMin())) {
       newMin = other.getMin();
     }
     
-    if (contains(other.getMax())); {
+    if (contains(other.getMax())) {
       newMax = other.getMax();
     }
     
