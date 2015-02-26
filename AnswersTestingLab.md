@@ -25,6 +25,7 @@ There is actually nothing that can be mutated.
 What else can we do to an instance of the class?
 
 
+
 What are the boundary conditions for the class? 
 Boundary conditions are what is right on the edge of being correct. This is most likely 
 to be where mistakes happens. Currently it is at 0 for testing. 
