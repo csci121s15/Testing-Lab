@@ -1,0 +1,45 @@
+import junit.framework.TestCase;
+public class RangeTest extends TestCase {
+  
+  public void testNewRange()
+  {
+    Range r = new Range(1.5, 3.3);
+    
+    assertEquals(1.5, r.getMin(), 0.001);
+    assertEquals(3.3, r.getMax(), 0.001);
+  }
+  
+  public void testInsideIntersection() {
+    Range rng = new Range(1,10);
+    Range rng2 = new Range(3,5);
+    assertEquals(rng2, rng.intersection(rng2));
+  }
+  public void testBothEqual() {
+    Range rng = new Range(1.0,10.0);
+    Range rng2 = new Range(1.0,10.0);
+    //assertEquals(rng2, rng.intersection(rng2));
+    Range i = rng.intersection(rng2);
+    assertEquals(1.0, i.getMin());
+    
+  }
+  public void testMinEquals() {
+    Range rng = new Range(1,10);
+    Range rng2 = new Range(1,15);
+    Range i = rng.intersection(rng2);
+    assertEquals(i, rng.intersection(rng2));
+  }
+  public void testMaxEqual() {
+    Range rng = new Range(1,10);
+    Range rng2 = new Range(2,10);
+    Range i = rng.intersection(rng2);
+    //assertEquals(2, i.getMin());
+    assertEquals(10, i.getMax());
+  }
+  public void testBothExceed() {
+    Range rng = new Range(1,10);
+    Range rng2 = new Range(3,12);
+    Range i = rng.intersection(rng2);
+    assertEquals(i, rng.intersection(rng2));
+
+}
+}
