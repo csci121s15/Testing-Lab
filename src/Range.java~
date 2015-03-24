@@ -1,0 +1,36 @@
+public class Range {
+  double start;
+  double stop;
+  
+  public Range(double start, double stop) {
+   start = Math.min(start, stop);
+   stop = Math.max(start, stop);
+  }
+  
+  public boolean contains(double value) {
+    if (value >= start && value <= stop){
+      return true; 
+    }
+    else {
+      return false;
+    }
+ }
+  
+  public double getWidth() {
+    return Math.abs(start-stop);
+    
+  }
+  
+  public double getMin() {
+    return start;
+    
+  }
+  
+  public double getMax() {
+    return stop;
+  }
+  
+  public Range intersection(Range other) {
+    
+  }
+}
