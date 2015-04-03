@@ -1,0 +1,10 @@
+import junit.framework.TestCase;
+
+
+public class Range test extends TestCase {
+  public void testX() {
+    Range rng = new Range(0.0, 0.0):
+  }
+  public void testMin() {
+}
+
